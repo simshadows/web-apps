@@ -39,9 +39,35 @@ See the root page for a link to the source code.
 
 <body>
 
-<textarea class="io" id="input">foobar</textarea>
-<span id="arrow">&#x21E9;</span>
-<textarea class="io" id="output"></textarea>
+<div>
+    <label>Input:</label><br/>
+    <textarea class="io" id="input">foobar</textarea>
+</div>
+<div>
+    <p>
+        <select id="decode-select">
+            <option value="none">(No Decoder)</option>
+            <option value="base64">Decoder: Base 64</option>
+            <option value="url">Decoder: URL/Percent</option>
+            <option value="xml-entities">Decoder: XML/HTML Character Entities</option>
+        </select>
+    </p>
+    <p>
+        <select id="encode-select">
+            <option value="none">(No Encoder)</option>
+            <option value="base64">Encoder: Base 64</option>
+            <option value="url">Encoder: URL/Percent</option>
+            <option value="xml-entities">Encoder: XML/HTML Character Entities</option>
+            <option value="calc-string-length">Calculate: String Length</option>
+        </select>
+    </p>
+    <button id="run-button" type="button" style="min-width: 5em;">Run</button>
+</div>
+<div><span id="arrow">&#x21E9;</span></div>
+<div>
+    <label>Output:</label><br/>
+    <textarea class="io" id="output"></textarea>
+</div>
 
 <script src="./index.js" type="module"></script>
 
