@@ -10,21 +10,22 @@
  * Encoders/Decoders
  */
 
-function passthrough(s) {
-    return s;
-}
-
-const decoders = {
-    "none": passthrough,
-    "base64": function(s) {
-        return atob(s);
-    },
-    "url": function(s) {
+const strFunctions = {
+    "none": (s) => s,
+    "base64-decode": (s) => atob(s),
+    "base64-encode": (s) => btoa(s),
+    "regex-literal-encode-jsflavour": (s) => RegExp.escape(s),
+    "url-decode": (s) => {
         // unescape() is a non-standard browser function.
         // Consider replacing with something better-supported.
         return unescape(s);
     },
-    "xml-entities": function(s) {
+    "url-encode": (s) => {
+        // escape() is a non-standard browser function.
+        // Consider replacing with something better-supported.
+        return escape(s);
+    },
+    "xml-entities-decode": (s) => {
         // We first do a quick test to see if this is unsafe
         const e = document.createElement("textarea");
         e.innerHTML = "<script>alert('Error: Your browser failed a compatibility test. Please report this bug on GitHub, or email <contact@simshadows.com>.')</script>";
@@ -34,26 +35,12 @@ const decoders = {
         e.innerHTML = s;
         return e.value;
     },
-}
-
-const encoders = {
-    "none": passthrough,
-    "base64": function(s) {
-        return btoa(s);
-    },
-    "url": function(s) {
-        // escape() is a non-standard browser function.
-        // Consider replacing with something better-supported.
-        return escape(s);
-    },
-    "xml-entities": function(s) {
+    "xml-entities-encode": (s) => {
         const e = document.createElement("textarea");
         e.innerText = s;
         return e.innerHTML;
     },
-    "calc-string-length": function(s) {
-        return s.length;
-    },
+    "calc-string-length": (s) => s.length,
 }
 
 /*
@@ -62,20 +49,14 @@ const encoders = {
 
 const inputElement = document.querySelector("#input");
 const outputElement = document.querySelector("#output");
-const inputDecodeSelect = document.querySelector("#decode-select");
-const outputEncodeSelect = document.querySelector("#encode-select");
+const fnSelect = document.querySelector("#fn-select");
 const runButton = document.querySelector("#run-button");
 
 function render() {
     try {
-        const inputMode = inputDecodeSelect.value;
-        const outputMode = outputEncodeSelect.value;
-
-        const decoder = decoders[inputMode];
-        const encoder = encoders[outputMode];
-
+        const fn = strFunctions[fnSelect.value];
         const inputValue = String(inputElement.value);
-        const outputValue = String(encoder(String(decoder(inputValue))));
+        const outputValue = String(fn(inputValue));
         outputElement.value = outputValue;
     } catch (e) {
         console.error(e);
@@ -86,8 +67,7 @@ function render() {
 [
     inputElement,
     //outputElement
-    inputDecodeSelect,
-    outputEncodeSelect,
+    fnSelect,
 ].forEach(x => x.addEventListener("change", render));
 
 runButton.addEventListener("click", render);

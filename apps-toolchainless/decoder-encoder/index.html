@@ -45,19 +45,15 @@ See the root page for a link to the source code.
 </div>
 <div>
     <p>
-        <select id="decode-select">
-            <option value="none">(No Decoder)</option>
-            <option value="base64">Decoder: Base 64</option>
-            <option value="url">Decoder: URL/Percent</option>
-            <option value="xml-entities">Decoder: XML/HTML Character Entities</option>
-        </select>
-    </p>
-    <p>
-        <select id="encode-select">
-            <option value="none">(No Encoder)</option>
-            <option value="base64">Encoder: Base 64</option>
-            <option value="url">Encoder: URL/Percent</option>
-            <option value="xml-entities">Encoder: XML/HTML Character Entities</option>
+        <select id="fn-select">
+            <option value="none">(No Function)</option>
+            <option value="base64-decode">Base 64 (Decode)</option>
+            <option value="base64-encode">Base 64 (Encode)</option>
+            <option value="regex-literal-encode-jsflavour">Regex Safe Literal (JS Regex) (Encode)</option>
+            <option value="url-encode">URL/Percent (Encode)</option>
+            <option value="url-decode">URL/Percent (Decode)</option>
+            <option value="xml-entities-encode">XML/HTML Character Entities (Encode)</option>
+            <option value="xml-entities-decode">XML/HTML Character Entities (Decode)</option>
             <option value="calc-string-length">Calculate: String Length</option>
         </select>
     </p>
