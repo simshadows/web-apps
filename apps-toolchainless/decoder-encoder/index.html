@@ -49,12 +49,15 @@ See the root page for a link to the source code.
             <option value="none">(No Function)</option>
             <option value="base64-decode">Base 64 (Decode)</option>
             <option value="base64-encode">Base 64 (Encode)</option>
-            <option value="regex-literal-encode-jsflavour">Regex Safe Literal (JS Regex) (Encode)</option>
+            <option value="regex-literal-jsflavour-encode">Regex Safe Literal (JS Flavour) (Encode)</option>
+            <!-- <option value="regex-literal-jsflavour-encode-modified">Regex Safe Literal (JS Flavour) (Encode) (Modified)</option> -->
             <option value="url-encode">URL/Percent (Encode)</option>
             <option value="url-decode">URL/Percent (Decode)</option>
             <option value="xml-entities-encode">XML/HTML Character Entities (Encode)</option>
             <option value="xml-entities-decode">XML/HTML Character Entities (Decode)</option>
             <option value="calc-string-length">Calculate: String Length</option>
+            <option value="experimental-regex-escape-by-character">Experimental: RegExp.escape() by character</option>
+            <!-- <option value="experimental-exception">Experimental: Debugging Exception</option> -->
         </select>
     </p>
     <button id="run-button" type="button" style="min-width: 5em;">Run</button>
@@ -64,6 +67,12 @@ See the root page for a link to the source code.
     <label>Output:</label><br/>
     <textarea class="io" id="output"></textarea>
 </div>
+
+<footer>
+    <a href="./about/">String Decoder/Encoder</a><br/>
+    built by <a href="https://www.simshadows.com/">simshadows</a><br/>
+    <a href="https://github.com/simshadows/small-web-apps-collection/tree/master/apps-toolchainless/decoder-encoder">source code</a>, licensed under AGPL-3.0
+</footer>
 
 <script src="./index.js" type="module"></script>
 

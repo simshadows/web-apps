@@ -26,6 +26,14 @@ body {
     padding: 0.4em;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 0.8em;
+    text-align: end;
+}
+
 #arrow {
     font-size: 3em;
 }
@@ -33,5 +41,9 @@ body {
 .io {
     height: 5em;
     width: 50em;
+}
+
+.error {
+    background: #faa;
 }
 
