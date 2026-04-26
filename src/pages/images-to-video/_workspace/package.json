@@ -1,0 +1,11 @@
+{
+  "name": "images-to-video",
+  "author": "simshadows <contact@simshadows.com>",
+  "version": "0.0.1",
+  "license": "AGPLv3",
+  "description": "Experimenting with converting images to video on the browser.",
+  "keywords": [],
+  "dependencies": {
+    "@ffmpeg/ffmpeg": "0.11.3"
+  }
+}

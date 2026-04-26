@@ -1,0 +1,64 @@
+---
+import "normalize.css";
+
+import {
+    SITE_TITLE,
+    ABOUT_URL,
+    MAIN_WEBSITE_URL,
+} from "@root/constants";
+import Layout from "@layouts/BlankLayout.astro";
+import BaseFooter from "@components/layout-helpers/BaseFooter.astro";
+import "@fontsource/roboto/index.css";
+import "@root/global.css";
+import "./_BaseLayout.css";
+
+interface Props {
+    title: string;
+    title2?: string | undefined;
+    title2url?: string | undefined;
+    description: string;
+    keywords: string[];
+    noRightSidebar?: boolean;
+    fullWidthLayout?: boolean;
+}
+
+const {
+    title,
+    title2,
+    title2url,
+    description,
+    keywords,
+    noRightSidebar,
+    fullWidthLayout,
+} = Astro.props;
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+    <div id="masthead" class="no-print"><div id="masthead__content" class="content-column">
+        <div id="masthead__title-container">
+            <a id="website-title" href="/">{SITE_TITLE}</a>
+            {title2 && <>
+                <span id="website-title2-separator">/</span>
+                <a id="website-title2" href={title2url}>{title2.trim()}</span>
+            </>}
+        </div>
+        <div id="masthead__menu">
+            <a href={ABOUT_URL}>About</a>
+            <a href={MAIN_WEBSITE_URL}>Main Site</a>
+        </div>
+    </div></div>
+    <div id="content-wrap" class={(fullWidthLayout) ? "content-full-width" : "content-column"}>
+        <div id="content">
+            <slot />
+        </div>
+        {(!noRightSidebar) && Astro.slots.has("right-sidebar") &&
+            <div id="right-sidebar-wrap" class="no-print">
+                <div id="right-sidebar">
+                    <slot name="right-sidebar" />
+                </div>
+            </div>
+        }
+    </div>
+    <BaseFooter />
+</Layout>
+

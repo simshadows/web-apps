@@ -4,8 +4,7 @@
 # The image is for updating dependencies and running the dev server,
 # which is why we mount the directory instead of copy it.
 
-# Using Node version 24 because of a Yarn bug.
-FROM node:24-trixie
+FROM node:25-bookworm
 
 RUN apt update
 RUN apt install -y vim python3
@@ -16,6 +15,10 @@ RUN chown node /repo
 WORKDIR /repo
 
 USER node
+
+# Install my dotfiles
+RUN git clone https://github.com/simshadows/sims-dotfiles.git ~/dotfiles
+RUN ~/dotfiles/setup.sh minimal
 
 # Install Claude Code
 RUN curl -fsSL https://claude.ai/install.sh | bash

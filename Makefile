@@ -40,7 +40,7 @@ build:
 up:
 	podman run \
 		--name $(CONTAINER_NAME) \
-		-p 127.0.0.1:$(DEV_SERVER_PORT):8000 \
+		-p 127.0.0.1:$(DEV_SERVER_PORT):8001 \
 		--mount type=bind,src=$(ROOT_PATH),dst=/repo \
 		--mount type=volume,src=$(CLAUDE_VOLUME_NAME),dst=/home/node/.claude \
 		--userns keep-id \
@@ -70,8 +70,7 @@ yarn-install:
 # Start dev server
 .PHONY: start dev
 start dev:
-	podman exec -it $(CONTAINER_NAME) yarn build
-	podman exec -it $(CONTAINER_NAME) yarn serve
+	podman exec -it $(CONTAINER_NAME) yarn start --host
 
 
 # Build release artifacts, to be deployed in Prod

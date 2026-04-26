@@ -1,0 +1,39 @@
+---
+import "normalize.css";
+
+import BaseHead from "@components/layout-helpers/BaseHead.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    keywords: string[];
+}
+
+const {
+    title,
+    description,
+    keywords,
+} = Astro.props;
+---
+
+<!doctype html>
+
+<!--
+Author:  simshadows <contact@simshadows.com>
+License: Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+
+Full source code is available here:
+<https://github.com/simshadows/simshadows.github.io>
+-->
+
+<html lang="en">
+    <BaseHead
+        title={title}
+        description={description}
+        keywords={keywords}
+    />
+    <body>
+        <slot/>
+    </body>
+</html>
+

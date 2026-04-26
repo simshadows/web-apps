@@ -1,0 +1,17 @@
+{
+  "name": "3d-lsystems-explorer",
+  "author": "simshadows <contact@simshadows.com>",
+  "version": "0.0.1",
+  "license": "AGPLv3",
+  "description": "Experimenting with 3D L-systems in browser.",
+  "keywords": [],
+  "devDependencies": {
+    "@types/dat.gui": "^0.7.7",
+    "@types/three": "^0.137.0"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.9",
+    "regenerator-runtime": "^0.13.11",
+    "three": "^0.137.5"
+  }
+}
