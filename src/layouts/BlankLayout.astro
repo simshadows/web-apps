@@ -7,23 +7,27 @@ interface Props {
     title: string;
     description: string;
     keywords: string[];
+    faviconPath?: string;
+    suppressDefaultViewport?: boolean;
 }
 
 const {
     title,
     description,
     keywords,
+    faviconPath,
+    suppressDefaultViewport,
 } = Astro.props;
 ---
 
 <!doctype html>
 
 <!--
-Author:  simshadows <contact@simshadows.com>
-License: Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+ Author: simshadows <contact@simshadows.com>
+License: GNU Affero General Public License v3.0 (AGPL-3.0)
 
 Full source code is available here:
-<https://github.com/simshadows/simshadows.github.io>
+<https://github.com/simshadows/web-apps>
 -->
 
 <html lang="en">
@@ -31,7 +35,11 @@ Full source code is available here:
         title={title}
         description={description}
         keywords={keywords}
-    />
+        {...(faviconPath ? {faviconPath} : {})}
+        {...(suppressDefaultViewport ? {suppressDefaultViewport} : {})}
+    >
+        <slot name="head"/>
+    </BaseHead>
     <body>
         <slot/>
     </body>
