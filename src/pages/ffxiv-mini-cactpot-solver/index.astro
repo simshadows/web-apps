@@ -1,34 +1,37 @@
 ---
 import Layout from "@layouts/BlankLayout.astro";
-import "./index.css";
+import "@legacy-dependencies/load-awesome-v1/css/ball-pulse.css";
+import "./_internal/index.css";
+
+import favicon from "./_internal/assets/mgp.png";
+import icon128x128 from "./_internal/assets/mgp-enlarged-for-touch-128x128.png";
+import icon152x152 from "./_internal/assets/mgp-enlarged-for-touch-152x152.png";
 ---
 
 <Layout
     title="FFXIV Mini Cactpot Solver"
     description="Perfect mini-cactpot games in as few clicks as possible."
     keywords={["FFXIV", "Final Fantasy XIV", "Mini Cactpot", "Solver", "Calculator", "Perfect"]}
-    faviconPath="./assets/mgp.png"
+    faviconPath={favicon.src}
     suppressDefaultViewport
 >
     <Fragment slot="head">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="./assets/mgp-enlarged-for-touch-128x128.png" rel="icon" sizes="128x128">
-        <link href="./assets/mgp-enlarged-for-touch-152x152.png" rel="icon" sizes="152x152">
-        <link href="./assets/mgp-enlarged-for-touch-152x152.png" rel="apple-touch-icon">
-        <link href="./assets/mgp-enlarged-for-touch-152x152.png" rel="apple-touch-icon" sizes="152x152">
+        <link href={icon128x128.src} rel="icon" sizes="128x128">
+        <link href={icon152x152.src} rel="icon" sizes="152x152">
+        <link href={icon152x152.src} rel="apple-touch-icon">
+        <link href={icon152x152.src} rel="apple-touch-icon" sizes="152x152">
 
-        <!-- <link rel="stylesheet" type="text/css" href="./index.css"> -->
-
-        <!-- Dependency from <https://github.com/danielcardoso/load-awesome> -->
-        <link href="/common-dependencies/load-awesome-v1/css/ball-pulse.css" rel="stylesheet">
-
+        <!-- TODO investigate whether we need to figure out preloading for performance -->
+        <!--
         <link rel="preload" as="font" crossorigin="anonymous" href="/common-dependencies/inconsolata-font/Inconsolata-VariableFont_wdth,wght.ttf">
-        <link rel="preload" as="script" crossorigin="anonymous" href="./algorithm.js">
-        <link rel="preload" as="script" crossorigin="anonymous" href="./hardcoded.js">
-        <link rel="preload" as="script" crossorigin="anonymous" href="./index.js">
-        <link rel="prefetch" as="script" crossorigin="anonymous" href="./worker.js">
+        <link rel="preload" as="script" crossorigin="anonymous" href="./_internal/algorithm.js">
+        <link rel="preload" as="script" crossorigin="anonymous" href="./_internal/hardcoded.js">
+        <link rel="preload" as="script" crossorigin="anonymous" href="./_internal/index.js">
+        <link rel="prefetch" as="script" crossorigin="anonymous" href="./_internal/worker.js">
         <link rel="prefetch" as="image" href="/common-dependencies/fontawesome-free-v6-web/sprites/regular.svg">
+        -->
     </Fragment>
 
     <div class="app-simple-mode" id="app">
@@ -79,6 +82,8 @@ import "./index.css";
         </div>
     </div>
 
-    <script src="./index.js" type="module"/>
+    <script>
+        import "./_internal/index.js";
+    </script>
 </Layout>
 

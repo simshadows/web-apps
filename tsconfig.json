@@ -24,6 +24,7 @@
       "@root/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
+      "@legacy-dependencies/*": ["./src/legacy-dependencies/*"],
       "@helpers/*": ["./src/helpers/*"]
     }
   }

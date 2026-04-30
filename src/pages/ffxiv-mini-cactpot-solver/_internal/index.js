@@ -275,7 +275,7 @@ const calcWrapper = (()=>{
 
     function initWorker() {
         if (calcWorker !== undefined) calcWorker.terminate();
-        calcWorker = new Worker("./worker.js", {type: "module"});
+        calcWorker = new Worker(new URL("./worker.js", import.meta.url), {type: "module"});
         calcWorker.onmessage = function(e) {
             const result = e.data[0];
             const knownNumbers = e.data[1];
